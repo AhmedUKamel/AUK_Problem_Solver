@@ -1,12 +1,10 @@
 package com.ahmedukamel.problemsolver.impl;
 
-import com.ahmedukamel.problemsolver.model.User;
 import com.ahmedukamel.problemsolver.repository.UserRepository;
 import com.ahmedukamel.problemsolver.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
