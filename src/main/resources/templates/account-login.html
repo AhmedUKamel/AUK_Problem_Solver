@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+<head>
+    <meta charset="utf-8">
+    <link th:href="@{/dist/images/logo.svg}" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="AhmedUKamel">
+    <title>Login Page</title>
+    <link rel="stylesheet" th:href="@{/dist/css/app.css}"/>
+    <link rel="stylesheet" th:href="@{/dist/css/main.css}"/>
+</head>
+<body class="login loading">
+<div class="container sm:px-10">
+    <div class="block xl:grid grid-cols-2 gap-4">
+        <div class="hidden xl:flex flex-col min-h-screen">
+            <a th:href="@{/}" class="-intro-x flex items-center pt-5">
+                <img alt="..." class="w-6" th:src="@{/dist/images/logo.svg}" src="">
+                <span class="text-white text-lg ml-3">
+                    <span class="font-medium">AUK</span> Problem Solver
+                </span>
+            </a>
+            <div class="my-auto">
+                <img alt="..." class="-intro-x w-1/2 -mt-16" th:src="@{/dist/images/illustration.svg}" src="">
+                <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">
+                    An one more click to log<br> into your account.
+                </div>
+                <div class="-intro-x mt-5 text-lg text-white">Manage all your courses in one place</div>
+            </div>
+        </div>
+        <div class="h-screen xl:h-auto flex py-5 xl:py-0 my-10 xl:my-0">
+            <div class="my-auto mx-auto xl:ml-20 bg-white xl:bg-transparent px-5 sm:px-8 py-8 xl:p-0 rounded-md shadow-md xl:shadow-none w-full sm:w-3/4 lg:w-2/4 xl:w-auto">
+                <h2 class="intro-x font-bold text-2xl xl:text-3xl text-center xl:text-left">
+                    Login
+                </h2>
+                <div class="intro-x mt-2 text-gray-500 xl:hidden text-center">
+                    An one more click to log into your account. Manage all your courses in one place
+                </div>
+                <form action="/account" method="post" th:object="${user}">
+                    <div class="intro-x mt-8">
+                        <label for="emailField"></label>
+                        <input id="emailField" type="email"
+                               class="intro-x login__input input input--lg border border-gray-300 block bg-gray-100 cursor-not-allowed border-theme-9"
+                               th:field="*{email}" readonly required/>
+                        <label for="loginPasswordField"></label>
+                        <input id="loginPasswordField" type="password"
+                               class="intro-x login__input input input--lg border border-gray-300 block mt-4"
+                               th:classappend="${#fields.hasErrors('password') ? 'border-theme-6' : ''}"
+                               placeholder="Password" th:field="*{password}" required>
+                        <p class="text-xs text-gray-600 mt-2 text-theme-6"
+                           th:if="${#fields.hasErrors('password')}" th:text="${#fields.errors('password')[0]}"></p>
+                    </div>
+                    <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
+                        <button id="submitButton" type="submit" class="button button--lg w-full xl:w-32 text-white bg-theme-1 xl:mr-3">
+                            Login
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/dist/js/app.js}"></script>
+<script th:src="@{/dist/js/validation.js}"></script>
+</body>
+</html>

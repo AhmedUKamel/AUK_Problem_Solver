@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+<head>
+    <meta charset="utf-8">
+    <link th:href="@{/dist/images/logo.svg}" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="AhmedUKamel">
+    <title>Accounts</title>
+    <link rel="stylesheet" th:href="@{/dist/css/app.css}"/>
+    <link rel="stylesheet" th:href="@{/dist/css/main.css}"/>
+</head>
+<body class="login loading">
+<div class="container sm:px-10">
+    <div class="block xl:grid grid-cols-2 gap-4">
+        <div class="hidden xl:flex flex-col min-h-screen">
+            <a th:href="@{/}" class="-intro-x flex items-center pt-5">
+                <img alt="..." class="w-6" th:src="@{/dist/images/logo.svg}" src="">
+                <span class="text-white text-lg ml-3">
+                    <span class="font-medium">AUK</span> Problem Solver
+                </span>
+            </a>
+            <div class="my-auto">
+                <img alt="..." class="-intro-x w-1/2 -mt-16" th:src="@{/dist/images/illustration.svg}" src="">
+                <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">
+                    An one click to check<br>your account.
+                </div>
+                <div class="-intro-x mt-5 text-lg text-white">Manage all your courses in one place</div>
+            </div>
+        </div>
+        <div class="h-screen xl:h-auto flex py-5 xl:py-0 my-10 xl:my-0">
+            <div class="my-auto mx-auto xl:ml-20 bg-white xl:bg-transparent px-5 sm:px-8 py-8 xl:p-0 rounded-md shadow-md xl:shadow-none w-full sm:w-3/4 lg:w-2/4 xl:w-auto">
+                <h2 class="intro-x font-bold text-2xl xl:text-3xl text-center xl:text-left">Your Account</h2>
+                <div class="intro-x mt-2 text-gray-500 xl:hidden text-center">
+                    An one click to check your account. Manage all your courses in one place.
+                </div>
+                <form action="/account" method="post" th:object="${user}">
+                    <div class="intro-x mt-8">
+                        <label for="emailField"></label>
+                        <input id="emailField" type="email" placeholder="example@gmail.com"
+                               class="intro-x login__input input input--lg border border-gray-300 block"
+                               th:classappend="${#fields.hasErrors('email') ? 'border-theme-6' : ''}"
+                               th:field="*{email}" required/>
+                        <p class="text-xs text-gray-600 mt-2 text-theme-6"
+                           th:if="${#fields.hasErrors('email')}" th:text="${#fields.errors('email')[0]}"></p>
+                    </div>
+                    <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
+                        <button id="submitButton" type="submit"
+                                class="button button--lg w-full xl:w-32 text-white bg-theme-1 xl:mr-3">
+                            Check
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/dist/js/app.js}"></script>
+<script th:src="@{/dist/js/validation.js}"></script>
+<div class="modal overflow-y-auto show" id="success-modal-preview"
+     th:if="${registeredSuccessfully}"
+     style="margin-top: 0; margin-left: 0; padding-left: 0; z-index: 51">
+    <div class="modal__content">
+        <div class="p-5 text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                 class="feather feather-check-circle w-16 h-16 text-theme-9 mx-auto mt-3">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            <div class="text-3xl mt-5">Account Registered Successfully!</div>
+            <div class="text-gray-600 mt-2">Call the moderator for account activation before login</div>
+        </div>
+        <div class="px-5 pb-8 text-center">
+            <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
