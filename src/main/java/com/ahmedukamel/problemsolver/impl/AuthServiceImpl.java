@@ -45,7 +45,8 @@ public class AuthServiceImpl implements AuthService {
         }
     }
 
-    private void authenticateSession(HttpServletRequest request, User user, String password) {
+    @Override
+    public void authenticateSession(HttpServletRequest request, User user, String password) {
         Authentication authentication = new UsernamePasswordAuthenticationToken(user.getEmail(), password, user.getAuthorities());
         Authentication authenticated = authenticationManager.authenticate(authentication);
         SecurityContext context = SecurityContextHolder.getContext();
