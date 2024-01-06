@@ -56,6 +56,7 @@
                 <div class="intro-y col-span-12 sm:col-span-6">
                     <label for="titleField" class="mb-2">Job Title</label>
                     <input id="titleField" type="text" class="input w-full border flex-1"
+                           th:classappend="${#fields.hasErrors('title') ? 'border-theme-6' : ''}"
                            placeholder="Full-Stack Developer" th:field="*{title}" required/>
                     <p class="text-xs text-gray-600 mt-2 text-theme-6"
                        th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
