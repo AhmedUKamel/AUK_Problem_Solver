@@ -4,6 +4,7 @@ import com.ahmedukamel.problemsolver.dto.UserRequest;
 import com.ahmedukamel.problemsolver.model.Gender;
 import com.ahmedukamel.problemsolver.service.AuthService;
 import com.ahmedukamel.problemsolver.service.UserService;
+import com.ahmedukamel.problemsolver.util.AuthenticatedUser;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
+import static com.ahmedukamel.problemsolver.util.DefaultURLs.SUCCESSFUL_LOGIN;
+
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("account")
@@ -26,8 +29,11 @@ public class AccountController {
 
     @GetMapping
     public String getCheckAccountPage(Model model) {
-        model.addAttribute("user", new UserRequest());
-        return "account-check";
+        if (AuthenticatedUser.getAuthenticatedUser() == null) {
+            model.addAttribute("user", new UserRequest());
+            return "account-check";
+        }
+        return "redirect:/" + SUCCESSFUL_LOGIN;
     }
 
     @PostMapping
@@ -45,7 +51,7 @@ public class AccountController {
             }
             // Try to log user in and authenticate this session
             if (authService.login(request, user)) {
-                return "redirect:/dashboard";
+                return "redirect:/" + SUCCESSFUL_LOGIN;
             } else {
                 return "account-login";
             }
