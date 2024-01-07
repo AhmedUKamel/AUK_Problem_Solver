@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Title</title>
+</head>
+<body layout:fragment="content">
+<div class="content">
+    <div class="intro-y flex items-center mt-8">
+        <h2 class="text-lg font-medium mr-auto">
+            User Profile
+        </h2>
+    </div>
+    <div class="grid grid-cols-12 gap-6">
+        <div class="col-span-12 lg:col-span-4 xxl:col-span-3 flex lg:block flex-col-reverse">
+            <div class="intro-y box mt-5">
+                <div class="relative flex items-center p-5" th:object="${user}">
+                    <div class="w-12 h-12 image-fit">
+                        <img alt="..." class="rounded-full" src="" th:src="*{picture}">
+                    </div>
+                    <div class="ml-4 mr-auto">
+                        <div class="font-medium text-base" th:text="*{name}"></div>
+                        <div class="text-gray-600" th:text="*{title}"></div>
+                    </div>
+                    <div class="dropdown relative">
+                        <a class="dropdown-toggle w-5 h-5 block" href="javascript:">
+                            <i data-feather="more-horizontal" class="w-5 h-5 text-gray-700"></i>
+                        </a>
+                        <div class="dropdown-box mt-5 absolute w-56 top-0 right-0 z-20">
+                            <div class="dropdown-box__content box">
+                                <div class="p-4 border-b border-gray-200 font-medium">Export Options</div>
+                                <div class="p-2">
+                                    <a href="#"
+                                       class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md">
+                                        <i data-feather="activity" class="w-4 h-4 text-gray-700 mr-2"></i> English </a>
+                                    <a href="#"
+                                       class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md">
+                                        <i data-feather="box" class="w-4 h-4 text-gray-700 mr-2"></i> Indonesia
+                                        <div class="text-xs text-white px-1 rounded-full bg-theme-6 ml-auto">10</div>
+                                    </a>
+                                    <a href="#"
+                                       class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md">
+                                        <i data-feather="layout" class="w-4 h-4 text-gray-700 mr-2"></i> English </a>
+                                    <a href="#"
+                                       class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md">
+                                        <i data-feather="sidebar" class="w-4 h-4 text-gray-700 mr-2"></i> Indonesia </a>
+                                </div>
+                                <div class="px-3 py-3 border-t border-gray-200 font-medium flex">
+                                    <button type="button" class="button button--sm bg-theme-1 text-white">Settings
+                                    </button>
+                                    <button type="button" class="button button--sm bg-gray-200 text-gray-600 ml-auto">
+                                        View Profile
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-5 border-t border-gray-200">
+                    <a class="flex items-center" th:href="@{/user/profile}"
+                       th:classappend="${profilePersonalInformation != null ? 'text-theme-1 font-medium' : ''}">
+                        <i data-feather="activity" class="w-4 h-4 mr-2"></i>
+                        Personal Information
+                    </a>
+                    <a class="flex items-center mt-5" href="#">
+                        <i data-feather="box" class="w-4 h-4 mr-2"></i>
+                        Account Settings
+                    </a>
+                    <a class="flex items-center mt-5" th:href="@{/user/profile/password/update}"
+                       th:classappend="${profileChangePassword != null ? 'text-theme-1 font-medium' : ''}">
+                        <i data-feather="lock" class="w-4 h-4 mr-2"></i>
+                        Change Password
+                    </a>
+                    <a class="flex items-center mt-5" href="#">
+                        <i data-feather="settings" class="w-4 h-4 mr-2"></i>
+                        User Settings
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div layout:fragment="userProfile"></div>
+    </div>
+</div>
+</body>
+</html>
