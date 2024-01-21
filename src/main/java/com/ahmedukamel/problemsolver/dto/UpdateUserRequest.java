@@ -1,10 +1,8 @@
 package com.ahmedukamel.problemsolver.dto;
 
-import com.ahmedukamel.problemsolver.validation.UniquePhone;
+import com.ahmedukamel.problemsolver.model.User;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,8 +10,6 @@ import static com.ahmedukamel.problemsolver.validation.ValidationMessages.*;
 import static com.ahmedukamel.problemsolver.validation.ValidationRegexp.*;
 
 @Data
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
 public class UpdateUserRequest {
     @Pattern(message = INVALID_NAME_MESSAGE, regexp = REGEXP_NAME)
@@ -24,4 +20,10 @@ public class UpdateUserRequest {
     private String bio;
     private String picture;
 
+    public UpdateUserRequest(User user) {
+        this.name = user.getName();
+        this.title = user.getTitle();
+        this.bio = user.getBio();
+        this.picture = user.getPicture();
+    }
 }

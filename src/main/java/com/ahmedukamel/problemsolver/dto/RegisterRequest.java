@@ -1,9 +1,15 @@
 package com.ahmedukamel.problemsolver.dto;
 
 import com.ahmedukamel.problemsolver.model.Gender;
-import com.ahmedukamel.problemsolver.validation.*;
-import jakarta.validation.constraints.*;
-import lombok.*;
+import com.ahmedukamel.problemsolver.validation.annotation.MatchPassword;
+import com.ahmedukamel.problemsolver.validation.annotation.UniquePhone;
+import com.ahmedukamel.problemsolver.validation.annotation.UniqueUsername;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import static com.ahmedukamel.problemsolver.validation.ValidationMessages.*;
 import static com.ahmedukamel.problemsolver.validation.ValidationRegexp.*;
@@ -13,11 +19,8 @@ import static com.ahmedukamel.problemsolver.validation.ValidationRegexp.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @MatchPassword(message = MISMATCH_PASSWORD_MESSAGE, passwordField = "password", confirmField = "confirm")
-@AccountLogin(message = WRONG_PASSWORD, emailField = "email", passwordField = "password")
-public class UserRequest {
+public class RegisterRequest {
     @Pattern(message = INVALID_EMAIL_MESSAGE, regexp = REGEXP_EMAIL)
-    @AccountActive(message = ACCOUNT_DISABLED)
-    @AccountOpen(message = ACCOUNT_LOCKED)
     private String email;
     @Pattern(message = INVALID_PASSWORD_MESSAGE, regexp = REGEXP_PASSWORD)
     private String password;
