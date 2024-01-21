@@ -38,13 +38,15 @@
                 <div class="intro-x mt-2 text-gray-500 xl:hidden text-center">
                     An one more click to log into your account. Manage all your courses in one place
                 </div>
-                <form action="/account" method="post" th:object="${user}">
+                <form action="/accounts/login" method="post" th:object="${user}">
                     <div class="intro-x mt-8">
                         <label for="emailField"></label>
                         <input id="emailField" type="email"
                                class="intro-x login__input input input--lg border border-gray-300 block bg-gray-100 cursor-not-allowed border-theme-9"
                                th:field="*{email}" readonly required/>
                         <label for="loginPasswordField"></label>
+                        <p class="text-xs text-gray-600 mt-2 text-theme-6"
+                           th:if="${#fields.hasErrors('email')}" th:text="${#fields.errors('email')[0]}"></p>
                         <input id="loginPasswordField" type="password"
                                class="intro-x login__input input input--lg border border-gray-300 block mt-4"
                                th:classappend="${#fields.hasErrors('password') ? 'border-theme-6' : ''}"

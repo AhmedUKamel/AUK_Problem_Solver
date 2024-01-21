@@ -36,7 +36,7 @@
                 <div class="intro-x mt-2 text-gray-500 xl:hidden text-center">
                     An one click to check your account. Manage all your courses in one place.
                 </div>
-                <form action="/account" method="post" th:object="${user}">
+                <form action="/accounts/check" method="post" th:object="${user}">
                     <div class="intro-x mt-8">
                         <label for="emailField"></label>
                         <input id="emailField" type="email" placeholder="example@gmail.com"
@@ -60,7 +60,7 @@
 <script th:src="@{/dist/js/app.js}"></script>
 <script th:src="@{/dist/js/validation.js}"></script>
 <div class="modal overflow-y-auto show" id="success-modal-preview"
-     th:if="${registeredSuccessfully}"
+     th:if="${successfulModal}"
      style="margin-top: 0; margin-left: 0; padding-left: 0; z-index: 51">
     <div class="modal__content">
         <div class="p-5 text-center">
@@ -70,8 +70,8 @@
                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                 <polyline points="22 4 12 14.01 9 11.01"></polyline>
             </svg>
-            <div class="text-3xl mt-5">Account Registered Successfully!</div>
-            <div class="text-gray-600 mt-2">Call the moderator for account activation before login</div>
+            <div class="text-3xl mt-5" th:text="${modalTitle}"></div>
+            <div class="text-gray-600 mt-2" th:text="${modalMessage}"></div>
         </div>
         <div class="px-5 pb-8 text-center">
             <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button>
