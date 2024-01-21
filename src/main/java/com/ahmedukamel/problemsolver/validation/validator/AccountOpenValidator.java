@@ -1,7 +1,8 @@
-package com.ahmedukamel.problemsolver.validation;
+package com.ahmedukamel.problemsolver.validation.validator;
 
 import com.ahmedukamel.problemsolver.model.User;
 import com.ahmedukamel.problemsolver.repository.UserRepository;
+import com.ahmedukamel.problemsolver.validation.annotation.AccountOpen;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,6 @@ public class AccountOpenValidator implements ConstraintValidator<AccountOpen, St
     @Override
     public boolean isValid(String email, ConstraintValidatorContext constraintValidatorContext) {
         Optional<User> optionalUser = repository.findByEmail(email.toLowerCase().strip());
-        return optionalUser.isEmpty() || optionalUser.get().isAccountNonLocked();
+        return optionalUser.isPresent() && optionalUser.get().isAccountNonLocked();
     }
 }

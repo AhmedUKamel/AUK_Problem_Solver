@@ -1,4 +1,4 @@
-package com.ahmedukamel.problemsolver.impl;
+package com.ahmedukamel.problemsolver.service.impl;
 
 import com.ahmedukamel.problemsolver.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +14,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        return repository.findByEmail(email).orElseThrow(
-                () -> new UsernameNotFoundException(String.format("User with email '%s' not found.", email)));
+        return repository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException(String.format("User with email '%s' not found.", email)));
     }
 }

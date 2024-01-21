@@ -1,7 +1,8 @@
-package com.ahmedukamel.problemsolver.validation;
+package com.ahmedukamel.problemsolver.validation.validator;
 
 import com.ahmedukamel.problemsolver.model.User;
 import com.ahmedukamel.problemsolver.repository.UserRepository;
+import com.ahmedukamel.problemsolver.validation.annotation.AccountLogin;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import lombok.RequiredArgsConstructor;
@@ -31,12 +32,12 @@ public class AccountLoginValidator implements ConstraintValidator<AccountLogin, 
         String password = (String) new BeanWrapperImpl(object).getPropertyValue(passwordField);
         if (email != null && password != null) {
             Optional<User> optionalUser = repository.findByEmail(email.toLowerCase().strip());
-            if (optionalUser.isPresent() && !passwordEncoder.matches(password, optionalUser.get().getPassword())) {
-                context.disableDefaultConstraintViolation();
-                context.buildConstraintViolationWithTemplate(message).addPropertyNode(passwordField).addConstraintViolation();
-                return false;
+            if (optionalUser.isPresent() && passwordEncoder.matches(password, optionalUser.get().getPassword())) {
+                return true;
             }
         }
-        return true;
+        context.disableDefaultConstraintViolation();
+        context.buildConstraintViolationWithTemplate(message).addPropertyNode(passwordField).addConstraintViolation();
+        return false;
     }
 }

@@ -1,7 +1,7 @@
-package com.ahmedukamel.problemsolver.validation;
+package com.ahmedukamel.problemsolver.validation.validator;
 
 import com.ahmedukamel.problemsolver.repository.UserRepository;
-import com.ahmedukamel.problemsolver.util.CustomFormatter;
+import com.ahmedukamel.problemsolver.validation.annotation.UniquePhone;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +12,6 @@ public class UniquePhoneValidator implements ConstraintValidator<UniquePhone, St
 
     @Override
     public boolean isValid(String phone, ConstraintValidatorContext constraintValidatorContext) {
-        return phone == null || !repository.existsByPhone(CustomFormatter.formatPhone(phone));
+        return phone == null || !repository.existsByPhone(phone);
     }
 }

@@ -1,6 +1,7 @@
-package com.ahmedukamel.problemsolver.validation;
+package com.ahmedukamel.problemsolver.validation.validator;
 
 import com.ahmedukamel.problemsolver.repository.UserRepository;
+import com.ahmedukamel.problemsolver.validation.annotation.UniqueUsername;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import lombok.RequiredArgsConstructor;

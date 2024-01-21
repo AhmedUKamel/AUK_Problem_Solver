@@ -1,5 +1,6 @@
-package com.ahmedukamel.problemsolver.validation;
+package com.ahmedukamel.problemsolver.validation.annotation;
 
+import com.ahmedukamel.problemsolver.validation.validator.AccountLoginValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 
@@ -17,5 +18,6 @@ public @interface AccountLogin {
     Class<? extends Payload>[] payload() default {};
 
     String emailField();
+
     String passwordField();
 }

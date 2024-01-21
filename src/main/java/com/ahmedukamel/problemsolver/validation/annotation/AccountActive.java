@@ -1,5 +1,6 @@
-package com.ahmedukamel.problemsolver.validation;
+package com.ahmedukamel.problemsolver.validation.annotation;
 
+import com.ahmedukamel.problemsolver.validation.validator.AccountActiveValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 
@@ -10,8 +11,8 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = AccountOpenValidator.class)
-public @interface AccountOpen {
+@Constraint(validatedBy = AccountActiveValidator.class)
+public @interface AccountActive {
     String message();
 
     Class<?>[] groups() default {};

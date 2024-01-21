@@ -1,11 +1,11 @@
-package com.ahmedukamel.problemsolver.validation;
+package com.ahmedukamel.problemsolver.validation.validator;
 
+import com.ahmedukamel.problemsolver.validation.annotation.MatchPassword;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import org.springframework.beans.BeanWrapperImpl;
 
 public class MatchPasswordValidator implements ConstraintValidator<MatchPassword, Object> {
-
     private String confirmField;
     private String passwordField;
     private String message;

@@ -1,5 +1,6 @@
-package com.ahmedukamel.problemsolver.validation;
+package com.ahmedukamel.problemsolver.validation.annotation;
 
+import com.ahmedukamel.problemsolver.validation.validator.UniqueUsernameValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 
@@ -10,8 +11,8 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = UniquePhoneValidator.class)
-public @interface UniquePhone {
+@Constraint(validatedBy = UniqueUsernameValidator.class)
+public @interface UniqueUsername {
     String message();
 
     Class<?>[] groups() default {};
