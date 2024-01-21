@@ -3,7 +3,7 @@ package com.ahmedukamel.problemsolver.service;
 import com.ahmedukamel.problemsolver.model.User;
 import com.ahmedukamel.problemsolver.model.AccountVerificationToken;
 import com.ahmedukamel.problemsolver.repository.UserRepository;
-import com.ahmedukamel.problemsolver.repository.VerificationEmailRepository;
+import com.ahmedukamel.problemsolver.repository.AccountVerificationRepository;
 import com.ahmedukamel.problemsolver.util.EmailTemplateUtils;
 import com.ahmedukamel.problemsolver.util.TokenStatus;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +17,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class AccountVerificationService {
     private final UserRepository userRepository;
-    private final VerificationEmailRepository emailRepository;
+    private final AccountVerificationRepository emailRepository;
     private final EmailSenderService emailSenderService;
 
     public void sendVerificationEmail(User user) {
