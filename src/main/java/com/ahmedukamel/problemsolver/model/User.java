@@ -1,5 +1,6 @@
 package com.ahmedukamel.problemsolver.model;
 
+import com.ahmedukamel.problemsolver.dto.RegisterRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -54,6 +55,19 @@ public class User implements UserDetails {
     private Set<Role> roles = new HashSet<>();
     @CreationTimestamp
     private Date register;
+
+    public User(RegisterRequest user) {
+        this.username = user.getUsername();
+        this.password = user.getPassword();
+        this.email = user.getEmail().toLowerCase().strip();
+        this.name = user.getName();
+        this.phone = user.getPhone();
+        this.picture = user.getPicture();
+        this.title = user.getTitle();
+        this.bio = user.getBio();
+        this.gender = user.getGender();
+        this.roles = Set.of(Role.STUDENT);
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
