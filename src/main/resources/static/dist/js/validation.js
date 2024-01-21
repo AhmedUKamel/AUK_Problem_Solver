@@ -19,7 +19,7 @@ const regexEmail = new RegExp('^[a-zA-Z0-9](.?[a-zA-Z0-9]){5,}@gmail.com$');
 const regexName = new RegExp('^[a-zA-Z]{3,}(?: [a-zA-Z]+){0,3}$');
 const regexTitle = new RegExp('^[a-zA-Z@-_()]{3,}(?: [a-zA-Z@-_()]+){0,3}$');
 const regexPassword = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d ]{8,}$');
-const regexPhone = new RegExp('^01\\d{9}$');
+const regexPhone = new RegExp('^\\+[1-9]{1}[0-9]{3,14}$');
 const regexBio = new RegExp('^.{10,}$');
 const regexCodeforces = new RegExp('^https://codeforces.com/profile/[a-zA-Z0-9_]+$');
 
@@ -28,7 +28,7 @@ const messageEmail = 'Invalid Gmail address, must match example@gmail.com';
 const messageName = 'Invalid name, must match from 1 to 4 only characters names';
 const messageTitle = 'Invalid title, must match from 1 to 4 characters and @-_()';
 const messagePassword = 'Invalid password, must match characters, at least one uppercase letter, one lowercase letter and one number';
-const messagePhone = 'Invalid phone number, must match 01XXXXXXXXX';
+const messagePhone = 'Invalid phone number, must match country code + number';
 const messageBio = 'Invalid bio, minimum length is 10 characters';
 const messageConfirm = 'Invalid confirm password, must match password';
 

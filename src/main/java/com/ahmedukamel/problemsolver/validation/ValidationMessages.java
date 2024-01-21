@@ -4,7 +4,7 @@ public interface ValidationMessages {
     String EXIST_USERNAME_MESSAGE = "Username is already exists";
     String EXIST_PHONE_MESSAGE = "Phone number is already exists";
     String INVALID_EMAIL_MESSAGE = "Invalid Gmail address, must match example@gmail.com";
-    String INVALID_PHONE_MESSAGE = "Invalid phone number, must match 01XXXXXXXXX";
+    String INVALID_PHONE_MESSAGE = "Invalid phone number, must match country code + number";
     String INVALID_NAME_MESSAGE = "Invalid name, must match from 1 to 4 only characters names";
     String INVALID_BIO_MESSAGE = "Invalid bio, minimum length is 10 characters";
     String INVALID_PASSWORD_MESSAGE = "Invalid password, must match characters, at least one uppercase letter, one lowercase letter and one number";
